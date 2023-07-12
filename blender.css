@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+header{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("material foto/bg.jpeg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+ul {
+    float: right;
+    list-style-type: none;
+    margin-top: 25px;
+}
+ul li {
+    display: inline-block;
+}
+ul li a {
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5%;
+    padding: 5px 20px;
+    border: 2px solid;
+    transition: 0.6s;
+    margin: 10px;
+}
+ul li a:hover{
+    background-color: #fff;
+    color: black;
+}
+.logo img {
+    float: left;
+    width: 180px;
+    height: auto;
+}
+.main {
+    max-width: 1200px;
+    margin: auto;
+}
+.judul{
+    color: white;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    transform: translate(-50%-50%);
+}
+.foto1 {
+    position: absolute;
+    top: 25%;
+    left: 17%;
+    transform: translate(-50%-50%);
+}
+.foto2 {
+    position: absolute;
+    top: 55%;
+    left: 10%;
+    transform: translate(-50%-50%);
+}

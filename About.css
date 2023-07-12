@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+header{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("material foto/bg.jpeg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+ul {
+    float: right;
+    list-style-type: none;
+    margin-top: 25px;
+}
+ul li {
+    display: inline-block;
+}
+ul li a {
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5%;
+    padding: 5px 20px;
+    border: 2px solid;
+    transition: 0.6s;
+    margin: 10px;
+}
+ul li a:hover{
+    background-color: #fff;
+    color: black;
+}
+.logo img {
+    float: left;
+    width: 180px;
+    height: auto;
+}
+.main {
+    max-width: 1200px;
+    margin: auto;
+}
+.title{
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    transform: translate(-50%-50%);
+}
+.title h2{
+    font-size: 30px;
+    color: white;
+    font-family: sans-serif;
+}
+.garis {
+    position: absolute;
+    top: 21%;
+    left: 10%;
+    transform: translate(-50%-50%);
+}
+.garis h3{
+    font-size: 35px;
+    color: white;
+    font-family: sans-serif;
+}
+.nama {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    transform: translate(-50%-50%);
+}
+.nama h1{
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+}
+.nama p{
+    font-size: 15px;
+    color: rgb(150, 144, 144);
+    font-family: sans-serif;
+}
+.alamat {
+    position: absolute;
+    top: 51%;
+    left: 10%;
+    transform: translate(-50%-50%);
+}
+.alamat h1{
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+}
+.alamat p{
+    font-size: 15px;
+    color: rgb(150, 144, 144);
+    font-family: sans-serif;
+}
+.hp {
+    position: absolute;
+    top: 37%;
+    left: 10%;
+    transform: translate(-50%-50%);
+}
+.hp h1{
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+}
+.hp p{
+    font-size: 15px;
+    color: rgb(150, 144, 144);
+    font-family: sans-serif;
+}
+.mail {
+    position: absolute;
+    top: 44%;
+    left: 10%;
+    transform: translate(-50%-50%);
+}
+.mail h1{
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+}
+.mail p{
+    font-size: 15px;
+    color: rgb(150, 144, 144);
+    font-family: sans-serif;
+}
+.hobi {
+    position: absolute;
+    top: 51%;
+    left: 40%;
+    transform: translate(-50%-50%);
+}
+.hobi h1{
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+}
+.hobi p{
+    font-size: 15px;
+    color: rgb(150, 144, 144);
+    font-family: sans-serif;
+}
+.sekolah {
+    position: absolute;
+    top: 44%;
+    left: 40%;
+    transform: translate(-50%-50%);
+}
+.sekolah h1{
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+}
+.sekolah p{
+    font-size: 15px;
+    color: rgb(150, 144, 144);
+    font-family: sans-serif;
+}
+.kelas {
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    transform: translate(-50%-50%);
+}
+.kelas h1{
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+}
+.kelas p{
+    font-size: 15px;
+    color: rgb(150, 144, 144);
+    font-family: sans-serif;
+}
+.jurusan {
+    position: absolute;
+    top: 37%;
+    left: 40%;
+    transform: translate(-50%-50%);
+}
+.jurusan h1{
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+}
+.jurusan p{
+    font-size: 15px;
+    color: rgb(150, 144, 144);
+    font-family: sans-serif;
+}
+.video {
+    position: absolute;
+    top: 30%;
+    left: 63%;
+    transform: translate(-50%-50%);
+}
+.video h1{
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+}
+.video p{
+    font-size: 15px;
+    color: rgb(150, 144, 144);
+    font-family: sans-serif;
+}
+.gambar {
+    position: absolute;
+    top: 70%;
+    left: 67%;
+    transform: translate(-50-50%);
+}
+.gambar h2 {
+    color: white;
+}
+.gambar h3 {
+    position: absolute;
+    top: 20%;
+    left: 8%;
+}
+.button{
+    position: absolute;
+    top: 55%;
+    left: 35%;
+    transform: translate(-50-50%);
+}
+.btn1{
+    border: 1px solid #fff;
+    padding: 10px 30px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.6s ease;
+    border-radius: 5px;
+    margin: 10px;
+}
+.btn1:hover{
+    background-color: #fff;
+    color: black;
+}

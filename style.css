@@ -1,0 +1,136 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Hide scrollbars from confetti */
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 120%;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: #ff69b4; /* Hot Pink */
+    font-size: 2.8em;
+    margin-bottom: 0;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 5px;
+}
+
+.card {
+    margin-top: 30px;
+}
+
+.main-image {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    border: 5px solid #ffc0cb; /* Pink */
+    object-fit: cover;
+}
+
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.gift-section {
+    margin-top: 30px;
+    position: relative;
+}
+
+.flower-image {
+    width: 250px;
+    position: absolute;
+    bottom: -60px;
+    right: -110px;
+    transform: rotate(15deg);
+}
+
+button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 20px;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.5);
+}
+
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Make sure it's not clickable */
+    z-index: 9999;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}

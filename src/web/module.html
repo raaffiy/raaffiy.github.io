@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriLens - Module</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('../../assets/bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+
+<body class="text-gray-200">
+
+    <!-- Navbar -->
+    <header class="bg-black/30 backdrop-blur-xl sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    
+            <!-- Logo -->
+            <a href="../../index.html" class="text-3xl font-bold text-white">
+                🌿 <span class="text-green-400">Agri</span>Lens
+            </a>
+    
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="module.html" class="text-green-400 font-semibold">Module Edukasi</a>
+                <a href="news.html" class="text-gray-300 hover:text-green-400 transition duration-300">News - AgriLens</a>
+                <a href="quiz.html" class="text-gray-300 hover:text-green-400 transition duration-300">Quiz & Tantangan</a>
+                <a href="forum.html" class="text-gray-300 hover:text-green-400 transition duration-300">Forum</a>
+            </div>
+    
+            <!-- Login (Desktop) -->
+            <a href="../../LoginRegisterForgot.html"
+                class="hidden md:block bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105">
+                Login
+            </a>
+    
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">
+                ☰
+            </button>
+        </nav>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden backdrop-blur-xl md:hidden">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+    
+                <a href="module.html" class="text-green-400 font-semibold">Module Edukasi</a>
+                <a href="news.html" class="text-gray-300 hover:text-green-400 transition duration-300">News - AgriLens</a>
+                <a href="quiz.html" class="text-gray-300 hover:text-green-400 transition duration-300">Quiz & Tantangan</a>
+                <a href="forum.html" class="text-gray-300 hover:text-green-400 transition duration-300">Forum</a>
+    
+                <a href="../../LoginRegisterForgot.html"
+                    class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 text-center rounded-full transition duration-300">
+                    Login
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero -->
+    <section class="container mx-auto px-6 py-16 text-center">
+        <div class="bg-black/40 backdrop-blur-xl p-12 rounded-3xl shadow-2xl">
+            <h1 class="text-5xl font-bold text-white">Module Edukasi Pertanian</h1>
+            <p class="mt-4 max-w-2xl mx-auto text-gray-300">
+                Belajar pertanian modern dengan mudah dan interaktif: panduan menanam, pembuatan pupuk organik, hingga
+                simulasi digital.
+            </p>
+        </div>
+    </section>
+
+    <!-- MENU PANADUAN MENANAM -->
+    <section id="panduan" class="container mx-auto px-6 py-16">
+        <h2 class="text-4xl font-bold text-center text-white mb-10">
+            Pilih <span class="text-green-400">Panduan Menanam</span>
+        </h2>
+    
+        <div class="grid md:grid-cols-3 gap-10">
+    
+            <!-- Card Tanaman -->
+            <a href="module-details.html"
+                class="group relative overflow-hidden rounded-3xl shadow-2xl border border-green-400/20 hover:border-green-400/60 transition duration-500">
+    
+                <!-- Background Image -->
+                <img src="../../assets/menanam/cabai.png"
+                    class="w-full h-56 object-cover transition duration-500 group-hover:scale-110 opacity-80">
+    
+                <!-- Overlay Gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+    
+                <!-- Content -->
+                <div class="absolute bottom-0 p-6">
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-green-400 transition">Cabai</h3>
+                    <p class="text-gray-300 text-sm">Panduan lengkap dari semai hingga panen.</p>
+                </div>
+            </a>
+    
+            <!-- Card Tanaman -->
+            <a href="module-details.html"
+                class="group relative overflow-hidden rounded-3xl shadow-2xl border border-green-400/20 hover:border-green-400/60 transition duration-500">
+    
+                <img src="../../assets/menanam/banana.png"
+                    class="w-full h-56 object-cover transition duration-500 group-hover:scale-110 opacity-80">
+    
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+    
+                <div class="absolute bottom-0 p-6">
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-green-400 transition">Pisang</h3>
+                    <p class="text-gray-300 text-sm">Bermanfaat untuk kesehatan jantung dan pencernaan</p>
+                </div>
+            </a>
+    
+            <!-- Card Tanaman -->
+            <a href="module-details.html"
+                class="group relative overflow-hidden rounded-3xl shadow-2xl border border-green-400/20 hover:border-green-400/60 transition duration-500">
+    
+                <img src="../../assets/menanam/tomat.png"
+                    class="w-full h-56 object-cover transition duration-500 group-hover:scale-110 opacity-80">
+    
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+    
+                <div class="absolute bottom-0 p-6">
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-green-400 transition">Tomat</h3>
+                    <p class="text-gray-300 text-sm">Butuh perawatan ekstra tapi hasilnya melimpah.</p>
+                </div>
+            </a>
+
+            <!-- Card Tanaman -->
+            <a href="module-details.html"
+                class="group relative overflow-hidden rounded-3xl shadow-2xl border border-green-400/20 hover:border-green-400/60 transition duration-500">
+    
+                <!-- Background Image -->
+                <img src="../../assets/menanam/padi.png"
+                    class="w-full h-56 object-cover transition duration-500 group-hover:scale-110 opacity-80">
+    
+                <!-- Overlay Gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+    
+                <!-- Content -->
+                <div class="absolute bottom-0 p-6">
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-green-400 transition">Padi</h3>
+                    <p class="text-gray-300 text-sm">Panduan lengkap dari semai hingga panen.</p>
+                </div>
+            </a>
+    
+            <!-- Card Tanaman -->
+            <a href="module-details.html"
+                class="group relative overflow-hidden rounded-3xl shadow-2xl border border-green-400/20 hover:border-green-400/60 transition duration-500">
+    
+                <img src="../../assets/menanam/jagung.png"
+                    class="w-full h-56 object-cover transition duration-500 group-hover:scale-110 opacity-80">
+    
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+    
+                <div class="absolute bottom-0 p-6">
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-green-400 transition">Jagung</h3>
+                    <p class="text-gray-300 text-sm">Bermanfaat untuk kesehatan jantung dan pencernaan</p>
+                </div>
+            </a>
+    
+            <!-- Card Tanaman -->
+            <a href="module-details.html"
+                class="group relative overflow-hidden rounded-3xl shadow-2xl border border-green-400/20 hover:border-green-400/60 transition duration-500">
+    
+                <img src="../../assets/menanam/wortel.png"
+                    class="w-full h-56 object-cover transition duration-500 group-hover:scale-110 opacity-80">
+    
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+    
+                <div class="absolute bottom-0 p-6">
+                    <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-green-400 transition">Wortel</h3>
+                    <p class="text-gray-300 text-sm">Butuh perawatan ekstra tapi hasilnya melimpah.</p>
+                </div>
+            </a>
+    
+        </div>
+    </section>
+
+    <!-- ===================== PANDUAN PUPUK ===================== -->
+    <section id="panduan" class="container mx-auto px-6 py-20">
+        <h2 class="text-4xl font-bold text-center text-white mb-10">
+            Pilih <span class="text-green-400">Panduan Pupuk</span>
+        </h2>
+
+
+        <!-- Menu Card -->
+        <div class="grid md:grid-cols-4 gap-8 mt-12">
+
+
+            <button onclick="openPopup('kompos')"
+                class="group bg-gray-900/50 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-green-500/30 hover:border-green-400 hover:-translate-y-2 transition transform">
+                <div class="text-5xl mb-4">🟤</div>
+                <h3 class="text-xl font-bold text-white mb-2">Pupuk Kompos</h3>
+                <p class="text-gray-300 text-sm">Daun kering, sisa makanan, rumput, sampah organik.</p>
+            </button>
+
+
+            <button onclick="openPopup('kandang')"
+                class="group bg-gray-900/50 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-green-500/30 hover:border-green-400 hover:-translate-y-2 transition transform">
+                <div class="text-5xl mb-4">🐄</div>
+                <h3 class="text-xl font-bold text-white mb-2">Pupuk Kandang</h3>
+                <p class="text-gray-300 text-sm">Kotoran sapi, kambing, ayam, dll.</p>
+            </button>
+
+
+            <button onclick="openPopup('poc')"
+                class="group bg-gray-900/50 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-green-500/30 hover:border-green-400 hover:-translate-y-2 transition transform">
+                <div class="text-5xl mb-4">💧</div>
+                <h3 class="text-xl font-bold text-white mb-2">Pupuk Cair Organik (POC)</h3>
+                <p class="text-gray-300 text-sm">Air cucian beras, gula, sisa sayur, MOL.</p>
+            </button>
+
+
+            <button onclick="openPopup('hijau')"
+                class="group bg-gray-900/50 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-green-500/30 hover:border-green-400 hover:-translate-y-2 transition transform">
+                <div class="text-5xl mb-4">🌿</div>
+                <h3 class="text-xl font-bold text-white mb-2">Pupuk Hijau</h3>
+                <p class="text-gray-300 text-sm">Tanaman dibenamkan ke tanah (kacang-kacangan).</p>
+            </button>
+        </div>
+    </section>
+
+    <!-- Popup Modal -->
+    <div id="popup-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md flex justify-center items-center z-50 hidden">
+        <div class="bg-gray-800/80 backdrop-blur-xl border border-green-500/50 rounded-2xl shadow-2xl max-w-3xl w-full p-8 m-4 relative transform transition-all duration-300 scale-95 opacity-0" id="popup-container">
+            <button onclick="closePopup()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-4xl transition-transform duration-300 hover:rotate-90">
+                &#x2715;
+            </button>
+            <h3 id="popup-title" class="text-3xl font-bold text-green-400 mb-6"></h3>
+            <div id="popup-content" class="text-gray-200 space-y-4 max-h-[70vh] overflow-y-auto pr-4"></div>
+        </div>
+    </div>
+
+    <!-- Simulasi Script -->
+    <script>
+        const popupData = {
+            kompos: {
+                title: "Cara Membuat Pupuk Kompos",
+                content: `
+                    <p class="text-lg">Pupuk kompos adalah pupuk organik yang dibuat dari bahan-bahan alami seperti daun kering, sisa sayuran, rumput, dan sampah dapur yang membusuk.</p>
+                    <hr class="border-green-500/30 my-4">
+                    <h4 class="font-semibold text-xl text-green-300 mb-2">Panduan Membuat Pupuk Kompos:</h4>
+                    <ol class="list-decimal list-inside space-y-2 mb-6">
+                        <li><strong>Siapkan Wadah:</strong> Gunakan komposter, bak, atau buat lubang di tanah.</li>
+                        <li><strong>Masukkan Bahan:</strong> Campurkan bahan organik hijau (sumber nitrogen) dan coklat (sumber karbon) dengan perbandingan 2:1.</li>
+                        <li><strong>Jaga Kelembapan:</strong> Siram campuran secara berkala agar tetap lembap seperti spons basah.</li>
+                        <li><strong>Aduk Rutin:</strong> Aduk tumpukan setiap 1-2 minggu.</li>
+                        <li><strong>Panen:</strong> Siap setelah 1-3 bulan, tekstur remah dan berbau tanah.</li>
+                    </ol>
+                    <hr class="border-green-500/30 my-4">
+                    <h4 class="font-semibold text-xl text-green-300 mb-3">Video Tutorial:</h4>
+                    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/8jC8krdIjus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                `
+            },
+            kandang: {
+                title: "Cara Mengolah Pupuk Kandang",
+                content: `
+                    <p class="text-lg">Pupuk kandang adalah pupuk organik yang berasal dari kotoran hewan seperti sapi, kambing, ayam, dan lainnya.</p>
+                    <hr class="border-green-500/30 my-4">
+                    <h4 class="font-semibold text-xl text-green-300 mb-2">Panduan Mengolah Pupuk Kandang:</h4>
+                    <ol class="list-decimal list-inside space-y-2 mb-6">
+                        <li><strong>Pengeringan:</strong> Keringkan untuk mengurangi kadar air dan amonia.</li>
+                        <li><strong>Dekomposisi:</strong> Campur dengan sekam atau jerami dan tutup terpal.</li>
+                        <li><strong>Jaga Kelembapan:</strong> Fermentasi 1-2 bulan.</li>
+                        <li><strong>Ciri Matang:</strong> Dingin, remah, tidak bau.</li>
+                    </ol>
+                    <hr class="border-green-500/30 my-4">
+                    <h4 class="font-semibold text-xl text-green-300 mb-3">Video Tutorial:</h4>
+                    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/8jC8krdIjus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                `
+            },
+            poc: {
+                title: "Cara Membuat Pupuk Organik Cair (POC)",
+                content: `
+                    <p class="text-lg">POC adalah pupuk dari air beras, gula, dan sisa sayur/buah yang difermentasi.</p>
+                    <hr class="border-green-500/30 my-4">
+                    <h4 class="font-semibold text-xl text-green-300 mb-2">Panduan Membuat POC:</h4>
+                    <ol class="list-decimal list-inside space-y-2 mb-6">
+                        <li><strong>Bahan:</strong> Ember tertutup, air beras, gula, sisa sayuran.</li>
+                        <li><strong>Campurkan:</strong> Masukkan semua bahan.</li>
+                        <li><strong>Fermentasi:</strong> 10–14 hari, buka setiap hari untuk gas.</li>
+                        <li><strong>Saring:</strong> Encerkan sebelum dipakai.</li>
+                    </ol>
+                    <hr class="border-green-500/30 my-4">
+                    <h4 class="font-semibold text-xl text-green-300 mb-3">Video Tutorial:</h4>
+                    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/8jC8krdIjus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                `
+            },
+            hijau: {
+                title: "Cara Membuat Pupuk Hijau",
+                content: `
+                    <p class="text-lg">Pupuk hijau dibuat dengan menanam tanaman kaya nitrogen lalu membenamkannya ke tanah.</p>
+                    <hr class="border-green-500/30 my-4">
+                    <h4 class="font-semibold text-xl text-green-300 mb-2">Panduan Membuat Pupuk Hijau:</h4>
+                    <ol class="list-decimal list-inside space-y-2 mb-6">
+                        <li><strong>Tanam Tanaman:</strong> Lamtoro, kacang, orok-orok, dll.</li>
+                        <li><strong>Pangkas:</strong> Sebelum berbunga.</li>
+                        <li><strong>Benamkan:</strong> Cacah dan campur ke tanah.</li>
+                        <li><strong>Dekomposisi:</strong> Biarkan beberapa minggu.</li>
+                    </ol>
+                    <hr class="border-green-500/30 my-4">
+                    <h4 class="font-semibold text-xl text-green-300 mb-3">Video Tutorial:</h4>
+                    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+                        <iframe src="https://www.youtube.com/embed/8jC8krdIjus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                `
+            }
+        };
+
+        function openPopup(type) {
+            const data = popupData[type];
+            const modal = document.getElementById('popup-modal');
+            const container = document.getElementById('popup-container');
+            const contentEl = document.getElementById('popup-content');
+
+            if (data) {
+                // set title + content (iframe akan dimasukkan kembali saat open)
+                document.getElementById('popup-title').innerText = data.title;
+                contentEl.innerHTML = data.content;
+                
+                // show modal
+                modal.classList.remove('hidden');
+                
+                // allow animation frame then animate in
+                setTimeout(() => {
+                    container.classList.remove('scale-95', 'opacity-0');
+                    container.classList.add('scale-100', 'opacity-100');
+                }, 50);
+
+                // fokus agar Esc bisa ditangkap
+                container.focus?.();
+            }
+        }
+
+        function closePopup() {
+            const modal = document.getElementById('popup-modal');
+            const container = document.getElementById('popup-container');
+            const contentEl = document.getElementById('popup-content');
+            // 1) Hentikan semua iframe YouTube / media segera agar tidak berjalan di background
+            const iframes = contentEl.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                // simpan src bila perlu (opsional):
+                // iframe.dataset.src = iframe.src;
+                // kosongkan src untuk menghentikan pemutaran
+                try {
+                    iframe.src = '';
+                } catch (e) {
+                    // fallback: hapus elemen
+                    iframe.remove();
+                }
+            });
+            // alternatif lebih drastis: kosongkan seluruh konten popup
+            // contentEl.innerHTML = '';
+            // 2) animasi keluar
+            container.classList.add('scale-95', 'opacity-0');
+            container.classList.remove('scale-100', 'opacity-100');
+            // 3) setelah animasi selesai, sembunyikan modal
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                // opsional: kosongkan konten setelah ditutup agar siap saat dibuka lagi
+                // (bisa juga dibiarkan, karena openPopup akan menimpa innerHTML)
+                // contentEl.innerHTML = '';
+            }, 300);
+        }
+        
+        /* --- tambahan opsional: tutup saat klik di area luar container --- */
+        document.getElementById('popup-modal').addEventListener('click', function (e) {
+            // jika klik tepat di background (bukan di container), tutup
+            if (e.target.id === 'popup-modal') closePopup();
+        });
+        
+        /* --- tambahan opsional: tutup saat tekan Escape --- */
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('popup-modal');
+                if (!modal.classList.contains('hidden')) closePopup();
+            }
+        });
+        
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-black/50 mt-20 border-t border-green-500/20">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+            <p class="text-lg font-semibold text-white">🌿 <span class="text-green-400">Agri</span>Lens</p>
+            <p class="mt-2">Smart Agriculture for a Better Future</p>
+            <p class="text-sm mt-4 opacity-70">&copy; 2025 AgriLens Project. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

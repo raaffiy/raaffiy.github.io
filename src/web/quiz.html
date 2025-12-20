@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriLens - Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background-image: url('../../assets/bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .fade-in {
+            animation: fadeIn .5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .match-item.selected {
+            border-color: #4ade80;
+            transform: scale(1.08);
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+        }
+    
+        .match-item.matched {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    
+        .match-item.correct {
+            background-color: rgba(34, 197, 94, 0.3);
+            border-color: #22c55e;
+            opacity: 1;
+        }
+    
+        .match-item.incorrect {
+            background-color: rgba(239, 68, 68, 0.3);
+            border-color: #ef4444;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="text-gray-100">
+
+    <!-- Header / Navbar -->
+    <header class="bg-black/30 backdrop-blur-xl sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+            <!-- Logo -->
+            <a href="../../index.html" class="text-3xl font-bold text-white">
+                🌿 <span class="text-green-400">Agri</span>Lens
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/src/web/module.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    Module Edukasi
+                </a>
+                <a href="/src/web/news.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    News - AgriLens
+                </a>
+                <a href="/src/web/quiz.html" class="text-green-400 font-semibold">
+                    Quiz & Tantangan
+                </a>
+                <a href="/src/web/forum.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    Forum
+                </a>
+            </div>
+
+            <!-- Login (Desktop) -->
+            <a href="../../LoginRegisterForgot.html"
+                class="hidden md:block bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105">
+                Login
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">
+                ☰
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden backdrop-blur-xl md:hidden">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+
+                <a href="../web/module.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    Module Edukasi
+                </a>
+                <a href="../web/news.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    News - AgriLens
+                </a>
+                <a href="../web/quiz.html" class="text-green-400 font-semibold">
+                    Quiz & Tantangan
+                </a>
+                <a href="../web/forum.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    Forum
+                </a>
+
+                <a href="../../LoginRegisterForgot.html"
+                    class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 text-center rounded-full transition duration-300">
+                    Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN GAME SECTION -->
+    <main class="container mx-auto px-6 py-16">
+
+        <!-- Hero -->
+        <section class="container mx-auto px-20 py-10 text-center">
+            <div class="bg-black/40 backdrop-blur-xl p-12 rounded-3xl shadow-2xl">
+                <h1 class="text-5xl font-bold text-white">🎮 Quiz & Tantangan <span class="text-green-400">AgriLens</span></h1>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-300">
+                    Uji pengetahuanmu seputar pertanian dan menangkan poin!
+                </p>
+            </div>
+        </section>
+
+        <!-- Game Box -->
+        <div id="game-container"
+            class="max-w-3xl mx-auto bg-black/60 border border-green-500 backdrop-blur-lg p-10 rounded-3xl shadow-xl fade-in">
+
+            <!-- Start Screen -->
+            <div id="start-screen">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-green-300">Siap Bermain?</h2>
+                <p class="text-lg text-gray-200 text-center mb-8">
+                    Jawab pertanyaan sebanyak mungkin. Setiap jawaban benar menambah skor!
+                </p>
+                <button id="start-btn"
+                    class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-xl transition duration-300 transform hover:scale-105">
+                    Mulai Kuis
+                </button>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div id="quiz-screen" class="hidden">
+
+                <!-- Score + Progress -->
+                <div class="flex justify-between mb-6 text-lg">
+                    <p>Skor: <span id="score" class="font-extrabold text-green-400">0</span></p>
+                    <p>Pertanyaan: <span id="progress" class="font-extrabold text-green-400">1/5</span></p>
+                </div>
+
+                <!-- Question Box -->
+                <h3 id="question-text" class="text-xl md:text-3xl font-semibold mb-8 text-white leading-relaxed">Pertanyaan akan muncul di sini...</h3>
+
+                <!-- Answer Buttons -->
+                <div id="answers" class="grid gap-4"></div>
+            </div>
+
+            <!-- ================= GAME MATCHING DITAMBAHKAN ================= -->
+            
+            <!-- Result Screen -->
+            <div id="result-screen" class="hidden fade-in text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-green-300">🎉 Kuis Selesai!</h2>
+                <p class="text-lg text-gray-200 mb-4">Skor Akhir Kamu:</p>
+                <p id="final-score" class="text-6xl font-extrabold text-green-400 mb-8">0</p>
+            
+                <button id="next-game-btn"
+                    class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-xl transition duration-300">
+                    Lanjut ke Game Pencocokan
+                </button>
+            </div>
+            
+            <!-- MATCHING GAME -->
+            <div id="matching-game" class="hidden fade-in max-w-4xl mx-auto bg-black/60 border border-blue-400 p-8 rounded-3xl mt-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-300 mb-2">🧠 Game Pencocokan</h2>
+                <p class="text-center text-gray-300 mb-8">Klik pada pertanyaan lalu klik pada jawaban yang benar untuk mencocokkannya!</p>
+            
+                <div class="relative">
+                    <!-- SVG for drawing lines -->
+                    <svg id="matching-lines" class="absolute top-0 left-0 w-full h-full pointer-events-none"></svg>
+            
+                    <!-- Container -->
+                    <div class="grid grid-cols-2 gap-x-16 gap-y-6">
+                        <!-- Questions List -->
+                        <div>
+                            <h3 class="font-bold text-lg text-green-400 mb-4 text-center">Pertanyaan</h3>
+                            <ul id="match-questions" class="space-y-4"></ul>
+                        </div>
+            
+                        <!-- Answers List -->
+                        <div>
+                            <h3 class="font-bold text-lg text-green-400 mb-4 text-center">Jawaban</h3>
+                            <ul id="match-answers" class="space-y-4"></ul>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="flex justify-center items-center gap-4 mt-8">
+                    <button id="check-matching" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-xl transition duration-300 transform hover:scale-105">
+                        Cek Jawaban
+                    </button>
+                    <button id="reset-matching" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 px-8 rounded-xl transition duration-300 transform hover:scale-105">
+                        Reset
+                    </button>
+                    <button class="bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-8 rounded-xl transition duration-300 transform hover:scale-105">
+                        <a href="quiz.html">Home</a>
+                    </button>
+                </div>
+                
+            
+                <p id="match-result" class="text-center text-lg mt-6 font-bold"></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-40 bg-black/50 py-8 text-center text-gray-400">
+        <p class="text-lg font-semibold text-white">🌿 <span class="text-green-400">Agri</span>Lens</p>
+        <p class="text-sm mt-2 opacity-80">&copy; 2025 AgriLens – All Rights Reserved.</p>
+    </footer>
+
+
+    <!-- GAME SCRIPT -->
+    <script>
+
+        const questions = [
+            {
+                q: "Apa itu pupuk kompos?",
+                a: ["Pupuk dari bahan kimia", "Pupuk dari hasil pembusukan bahan organik", "Alat penyiram tanaman", "Sistem irigasi"],
+                correct: 1
+            },
+            {
+                q: "Hidroponik adalah metode menanam dengan...",
+                a: ["Tanpa tanah", "Di bawah laut", "Di hutan lebat", "Hanya memakai pupuk kimia"],
+                correct: 0
+            },
+            {
+                q: "Suhu optimal untuk budidaya tanaman cabai adalah...",
+                a: ["0–5°C", "10–15°C", "20–30°C", "50°C ke atas"],
+                correct: 2
+            },
+            {
+                q: "Manakah berikut ini yang merupakan hama tanaman?",
+                a: ["Kumbang", "NPK", "Rangkaian IoT", "Traktor"],
+                correct: 0
+            },
+            {
+                q: "Fungsi MOL dalam pertanian adalah...",
+                a: ["Penyerap air", "Bahan bakar mesin", "Sumber mikroorganisme", "Pembasmi logam"],
+                correct: 2
+            }
+        ];
+
+        let index = 0;
+        let score = 0;
+
+        const startScreen = document.getElementById("start-screen");
+        const quizScreen = document.getElementById("quiz-screen");
+        const resultScreen = document.getElementById("result-screen");
+
+        const scoreText = document.getElementById("score");
+        const progressText = document.getElementById("progress");
+        const questionText = document.getElementById("question-text");
+        const answersBox = document.getElementById("answers");
+        const finalScore = document.getElementById("final-score");
+
+        document.getElementById("start-btn").onclick = () => {
+            startScreen.classList.add("hidden");
+            quizScreen.classList.remove("hidden");
+            loadQuestion();
+        };
+
+        function loadQuestion() {
+            const question = questions[index];
+            questionText.textContent = question.q;
+            answersBox.innerHTML = "";
+
+            progressText.textContent = `${index + 1}/${questions.length}`;
+
+            question.a.forEach((ans, i) => {
+                const btn = document.createElement("button");
+                btn.textContent = ans;
+                btn.id = `answer-btn-${i}`; // Add ID for targeting
+                btn.className =
+                    "w-full bg-gray-700 hover:bg-green-600 text-white py-3 rounded-xl transition duration-300 transform hover:scale-105"; // Added hover effect
+                btn.onclick = () => checkAnswer(i);
+                answersBox.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(choice) {
+            const correctAnswerIndex = questions[index].correct;
+            const selectedButton = document.getElementById(`answer-btn-${choice}`);
+            const correctButton = document.getElementById(`answer-btn-${correctAnswerIndex}`);
+
+            // Disable all buttons to prevent further clicks
+            Array.from(answersBox.children).forEach(button => {
+                button.disabled = true;
+                button.classList.remove("hover:bg-green-600", "hover:scale-105"); // Remove hover effects
+                button.classList.add("cursor-not-allowed");
+            });
+
+            if (choice === correctAnswerIndex) {
+                score++;
+                scoreText.textContent = score;
+                selectedButton.classList.add("bg-green-700", "scale-105"); // Highlight correct choice
+            } else {
+                selectedButton.classList.add("bg-red-700", "scale-105"); // Highlight incorrect choice
+                correctButton.classList.add("bg-green-700", "scale-105"); // Show the correct answer
+            }
+
+            index++;
+
+            setTimeout(() => {
+                if (index < questions.length) {
+                    loadQuestion();
+                } else {
+                    showResult();
+                }
+            }, 1500); // 1.5 second delay before next question
+        }
+        
+        function showResult() {
+            quizScreen.classList.add("hidden");
+            resultScreen.classList.remove("hidden");
+            finalScore.textContent = score;
+        }
+
+        document.getElementById("restart-btn").onclick = () => {
+            index = 0;
+            score = 0;
+            scoreText.textContent = 0;
+            resultScreen.classList.add("hidden");
+            quizScreen.classList.remove("hidden");
+            loadQuestion();
+        };
+
+    </script>
+
+    <script>
+        // ========= DATA MATCHING =========
+        const matchingData = [
+            { q: "Apa itu pupuk kompos?", a: "Pupuk dari pembusukan bahan organik" },
+            { q: "Metode hidroponik digunakan untuk...", a: "Menanam tanpa tanah" },
+            { q: "Suhu ideal budidaya cabai adalah...", a: "20–30°C" },
+            { q: "Yang termasuk hama tanaman adalah...", a: "Kumbang" },
+            { q: "Fungsi MOL adalah...", a: "Sumber mikroorganisme" }
+        ];
+
+        const nextBtn = document.getElementById("next-game-btn");
+        const matchingSection = document.getElementById("matching-game");
+        const mainGameContainer = document.getElementById("game-container");
+
+        nextBtn.onclick = () => {
+            document.getElementById("result-screen").classList.add("hidden");
+            mainGameContainer.classList.remove("max-w-3xl");
+            mainGameContainer.classList.add("max-w-4xl");
+            matchingSection.classList.remove("hidden");
+            loadMatchingGame();
+        };
+
+        let selectedQuestion = null;
+        let matches = {}; // {questionId: answerId}
+
+        function loadMatchingGame() {
+            const qContainer = document.getElementById("match-questions");
+            const aContainer = document.getElementById("match-answers");
+
+            qContainer.innerHTML = "";
+            aContainer.innerHTML = "";
+            document.getElementById("matching-lines").innerHTML = "";
+            document.getElementById("match-result").innerHTML = "";
+            matches = {};
+            selectedQuestion = null;
+
+            const questions = matchingData.map((item, i) => ({ text: item.q, id: i }));
+            const answers = matchingData.map((item, i) => ({ text: item.a, id: i }));
+
+            // Shuffle answers
+            const shuffledAnswers = answers.sort(() => Math.random() - 0.5);
+
+            questions.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item.text;
+                li.dataset.id = item.id;
+                li.className = "match-item bg-gray-700/80 border border-gray-500 p-4 rounded-lg cursor-pointer transition-all duration-300 hover:bg-green-600/60 hover:scale-105";
+                li.onclick = () => selectQuestion(li);
+                qContainer.appendChild(li);
+            });
+
+            shuffledAnswers.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item.text;
+                li.dataset.id = item.id;
+                li.className = "match-item bg-gray-700/80 border border-gray-500 p-4 rounded-lg cursor-pointer transition-all duration-300 hover:bg-blue-600/60 hover:scale-105";
+                li.onclick = () => selectAnswer(li);
+                aContainer.appendChild(li);
+            });
+        }
+
+        function selectQuestion(li) {
+            if (li.classList.contains('matched')) return;
+
+            const allQuestions = document.querySelectorAll('#match-questions li');
+            allQuestions.forEach(q => q.classList.remove('selected', 'bg-green-500', 'text-white', 'scale-110'));
+
+            li.classList.add('selected', 'bg-green-500', 'text-white', 'scale-110');
+            selectedQuestion = li;
+        }
+
+        function selectAnswer(li) {
+            if (!selectedQuestion || li.classList.contains('matched')) return;
+
+            const questionId = selectedQuestion.dataset.id;
+            const answerId = li.dataset.id;
+
+            // Deselect if already matched to another
+            for (const qId in matches) {
+                if (matches[qId] === answerId) {
+                    delete matches[qId];
+                    const prevQ = document.querySelector(`#match-questions li[data-id='${qId}']`);
+                    prevQ.classList.remove('matched', 'correct', 'incorrect');
+                    const prevA = document.querySelector(`#match-answers li[data-id='${matches[qId]}']`);
+                }
+            }
+
+            matches[questionId] = answerId;
+
+            const allAnswers = document.querySelectorAll('#match-answers li');
+            allAnswers.forEach(a => {
+                if (Object.values(matches).includes(a.dataset.id)) {
+                    a.classList.add('matched');
+                } else {
+                    a.classList.remove('matched');
+                }
+            });
+
+            selectedQuestion.classList.add('matched');
+            li.classList.add('matched');
+
+            drawLines();
+            selectedQuestion.classList.remove('selected', 'bg-green-500', 'text-white', 'scale-110');
+            selectedQuestion = null;
+        }
+
+        function drawLines() {
+            const svg = document.getElementById("matching-lines");
+            svg.innerHTML = '';
+
+            for (const qId in matches) {
+                const qEl = document.querySelector(`#match-questions li[data-id='${qId}']`);
+                const aEl = document.querySelector(`#match-answers li[data-id='${matches[qId]}']`);
+
+                const qRect = qEl.getBoundingClientRect();
+                const aRect = aEl.getBoundingClientRect();
+                const containerRect = svg.getBoundingClientRect();
+
+                const x1 = qRect.right - containerRect.left;
+                const y1 = qRect.top + qRect.height / 2 - containerRect.top;
+                const x2 = aRect.left - containerRect.left;
+                const y2 = aRect.top + aRect.height / 2 - containerRect.top;
+
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', x1);
+                line.setAttribute('y1', y1);
+                line.setAttribute('x2', x2);
+                line.setAttribute('y2', y2);
+                line.setAttribute('stroke', '#4ade80'); // green-400
+                line.setAttribute('stroke-width', '3');
+                line.dataset.lineFor = qId;
+                svg.appendChild(line);
+            }
+        }
+
+        document.getElementById("check-matching").onclick = () => {
+            let correctCount = 0;
+            const resultEl = document.getElementById("match-result");
+
+            for (const qId in matches) {
+                const isCorrect = qId === matches[qId];
+                const qEl = document.querySelector(`#match-questions li[data-id='${qId}']`);
+                const aEl = document.querySelector(`#match-answers li[data-id='${matches[qId]}']`);
+                const line = document.querySelector(`line[data-line-for='${qId}']`);
+
+                qEl.classList.remove('correct', 'incorrect');
+                aEl.classList.remove('correct', 'incorrect');
+
+                if (isCorrect) {
+                    correctCount++;
+                    qEl.classList.add('correct');
+                    aEl.classList.add('correct');
+                    if (line) line.setAttribute('stroke', '#22c55e'); // green-600
+                } else {
+                    qEl.classList.add('incorrect');
+                    aEl.classList.add('incorrect');
+                    if (line) line.setAttribute('stroke', '#ef4444'); // red-500
+                }
+            }
+
+            if (correctCount === matchingData.length) {
+                resultEl.innerHTML = `🎉 <span class="text-green-400">Luar Biasa! Semua jawaban benar!</span>`;
+                document.getElementById("restart-btn").classList.remove("hidden");
+                document.getElementById("check-matching").classList.add("hidden");
+                document.getElementById("reset-matching").classList.add("hidden");
+
+            } else {
+                resultEl.innerHTML = `✨ Kamu benar <span class="text-yellow-400">${correctCount}</span> dari ${matchingData.length}. Coba lagi!`;
+            }
+        };
+
+        document.getElementById("reset-matching").onclick = loadMatchingGame;
+        window.addEventListener('resize', drawLines);
+    </script>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu')   
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+
+</html>

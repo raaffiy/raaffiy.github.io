@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriLens - Forum</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('../../assets/bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.25s ease-out;
+        }
+
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Navbar -->
+    <header class="bg-black/30 backdrop-blur-xl sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    
+            <!-- Logo -->
+            <a href="../../index.html" class="text-3xl font-bold text-white">
+                🌿 <span class="text-green-400">Agri</span>Lens
+            </a>
+    
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="module.html" class="text-gray-300 hover:text-green-400 transition duration-300">Module Edukasi</a>
+                <a href="news.html" class="text-gray-300 hover:text-green-400 transition duration-300">News - AgriLens</a>
+                <a href="quiz.html" class="text-gray-300 hover:text-green-400 transition duration-300">Quiz & Tantangan</a>
+                <a href="forum.html" class="text-green-400 font-semibold">Forum</a>
+            </div>
+    
+            <!-- Login (Desktop) -->
+            <a href="../../LoginRegisterForgot.html"
+                class="hidden md:block bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105">
+                Login
+            </a>
+    
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">
+                ☰
+            </button>
+        </nav>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden backdrop-blur-xl md:hidden">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+    
+                <a href="module.html" class="text-gray-300 hover:text-green-400 transition duration-300">Module Edukasi</a>
+                <a href="news.html" class="text-gray-300 hover:text-green-400 transition duration-300">News - AgriLens</a>
+                <a href="quiz.html" class="text-gray-300 hover:text-green-400 transition duration-300">Quiz & Tantangan</a>
+                <a href="forum.html" class="text-green-400 font-semibold">Forum</a>
+    
+                <a href="../../LoginRegisterForgot.html"
+                    class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 text-center rounded-full transition duration-300">
+                    Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="container mx-auto px-6 py-16 text-center">
+        <div class="bg-black/40 backdrop-blur-xl p-10 rounded-3xl">
+            <h1 class="text-4xl md:text-6xl font-bold text-white">
+                Forum Diskusi & Tanya Jawab
+            </h1>
+            <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
+                Saling berbagi pengalaman, bertanya, dan belajar bersama komunitas petani dan warga.
+            </p>
+
+            <button id="openModal"
+                class="inline-block mt-8 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                + Buat Pertanyaan
+            </button>
+        </div>
+    </section>
+
+    <!-- SEARCH -->
+    <div class="container mx-auto px-6 -mt-6">
+        <div class="bg-black/40 backdrop-blur-xl p-6 rounded-2xl shadow-xl">
+            <input type="text" placeholder="🔍 Cari pertanyaan atau topik..."
+                class="w-full bg-black/30 border border-gray-600 rounded-xl px-4 py-3 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500">
+        </div>
+    </div>
+
+    <!-- LIST DISKUSI -->
+    <section class="container mx-auto px-6 py-16 space-y-6">
+
+        <!-- ITEM 1 -->
+        <div class="bg-black/40 backdrop-blur-xl p-6 rounded-2xl shadow-md">
+
+            <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-xl font-semibold text-white">
+                        Cara membuat pupuk kompos yang baik untuk sayuran?
+                    </h3>
+                    <p class="mt-1 text-gray-400 text-sm">
+                        Ditanyakan oleh <span class="text-green-400 font-semibold">· 2 jam lalu</span>
+                    </p>
+                </div>
+                
+                <div class="flex items-center gap-4 mt-4 text-sm text-gray-400">
+                    <span>💬 8 komentar</span>
+                    <span>⭐ 14 suka</span>
+                </div>
+            </div>
+
+            <!-- Dropdown Button -->
+            <button class="toggle-answer mt-4 text-green-400 hover:text-green-300">
+                Lihat Jawaban ▼
+            </button>
+
+            <!-- Dropdown Content -->
+            <div class="answer hidden mt-4 bg-black/30 p-4 rounded-xl">
+                <p class="text-gray-300">
+                    ✔ Campurkan bahan hijau & coklat, jaga kelembaban, dan bolak-balikkan selama 2 minggu.
+                </p>
+            </div>
+        </div>
+
+        <!-- ITEM 2 -->
+        <div class="bg-black/40 backdrop-blur-xl p-6 rounded-2xl shadow-md">
+
+            <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-xl font-semibold text-white">
+                        Sensor kelembaban tanah yang murah dan akurat, rekomendasi?
+                    </h3>
+                    <p class="mt-1 text-gray-400 text-sm">
+                        Ditanyakan oleh <span class="text-green-400 font-semibold">· 1 hari lalu</span>
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-4 mt-4 text-sm text-gray-400">
+                    <span>💬 8 komentar</span>
+                    <span>⭐ 14 suka</span>
+                </div>
+
+            </div>
+
+            <button class="toggle-answer mt-4 text-green-400 hover:text-green-300">
+                Lihat Jawaban ▼
+            </button>
+
+            <div class="answer hidden mt-4 bg-black/30 p-4 rounded-xl">
+                <p class="text-gray-300">
+                    ✔ Gunakan sensor YL-69 atau Capacitive Moisture Sensor, lebih akurat & tahan lama.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black/50 mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+            <p class="text-lg font-semibold text-white">🌿 <span class="text-green-400">Agri</span>Lens</p>
+            <p class="mt-2">Smart Agriculture for a Better Future</p>
+            <p class="text-sm mt-4 opacity-70">&copy; 2025 AgriLens Project. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- POPUP FORM -->
+    <div id="modal"
+        class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-[999] p-4 transition-all duration-300">
+    
+        <div
+            class="bg-gray-900 p-8 rounded-2xl w-full max-w-lg shadow-[0_0_40px_rgba(0,255,150,0.2)] relative animate-fadeIn">
+    
+            <!-- Close Button -->
+            <button id="closeModal"
+                class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl transition duration-200">
+                ✖
+            </button>
+    
+            <h2 class="text-3xl font-bold text-green-400 mb-2">Buat Pertanyaan</h2>
+            <p class="text-gray-400 mb-6 text-sm">
+                Tanyakan permasalahanmu dan bantu dapatkan jawaban dari komunitas AgriLens.
+            </p>
+    
+            <form class="space-y-5">
+    
+                <!-- Judul -->
+                <div>
+                    <label class="text-gray-300 text-sm block mb-1">Judul Pertanyaan</label>
+                    <input type="text" placeholder="Contoh: Cara membuat kompos cepat jadi"
+                        class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-gray-200 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition">
+                </div>
+    
+                <!-- Isi Pertanyaan -->
+                <div>
+                    <label class="text-gray-300 text-sm block mb-1">Isi Pertanyaan</label>
+                    <textarea rows="4" placeholder="Tulis pertanyaan kamu..."
+                        class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-gray-200 focus:ring-2 focus:ring-green-500 outline-none transition"></textarea>
+                </div>
+    
+                <!-- Tombol Kirim -->
+                <button type="submit"
+                    class="w-full bg-green-600 hover:bg-green-500 text-white font-semibold py-3 rounded-xl shadow-lg shadow-green-600/20 active:scale-[0.97] transition duration-200">
+                    Kirim Pertanyaan
+                </button>
+    
+            </form>
+        </div>
+    </div>
+
+
+    <!-- SCRIPT -->
+    <script>
+        // Mobile menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modal
+        const modal = document.getElementById("modal");
+        const openModalBtn = document.getElementById("openModal");
+        const closeModalBtn = document.getElementById("closeModal");
+
+        openModalBtn.addEventListener("click", () => {
+            modal.classList.remove("hidden");
+        });
+
+        closeModalBtn.addEventListener("click", () => {
+            modal.classList.add("hidden");
+        });
+
+        // Close when clicking outside form
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) modal.classList.add("hidden");
+        });
+
+        // Dropdown Answers
+        const toggles = document.querySelectorAll(".toggle-answer");
+
+        toggles.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const answer = btn.nextElementSibling;
+                answer.classList.toggle("hidden");
+                btn.textContent = answer.classList.contains("hidden")
+                    ? "Lihat Jawaban ▼"
+                    : "Sembunyikan Jawaban ▲";
+            });
+        });
+    </script>
+
+</body>
+
+</html>

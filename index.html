@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriLens - Smart Agriculture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('assets/bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Header / Navbar -->
+    <header class="bg-black/30 backdrop-blur-xl sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    
+            <!-- Logo -->
+            <a href="index.html" class="text-3xl font-bold text-white">
+                🌿 <span class="text-green-400">Agri</span>Lens
+            </a>
+    
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/src/web/module.html" class="text-gray-300 hover:text-green-400 transition duration-300">Module Edukasi</a>
+                <a href="/src/web/news.html" class="text-gray-300 hover:text-green-400 transition duration-300">News - AgriLens</a>
+                <a href="/src/web/quiz.html" class="text-gray-300 hover:text-green-400 transition duration-300">Quiz & Tantangan</a>
+                <a href="/src/web/forum.html" class="text-gray-300 hover:text-green-400 transition duration-300">Forum</a>
+            </div>
+    
+            <!-- Login (Desktop) -->
+            <a href="LoginRegisterForgot.html"
+                class="hidden md:block bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105">
+                Login
+            </a>
+    
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">
+                ☰
+            </button>
+        </nav>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden backdrop-blur-xl md:hidden">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+    
+                <a href="/src/web/module.html" class="text-gray-300 hover:text-green-400 transition duration-300">Module Edukasi</a>
+                <a href="/src/web/news.html" class="text-gray-300 hover:text-green-400 transition duration-300">News - AgriLens</a>
+                <a href="/src/web/quiz.html" class="text-gray-300 hover:text-green-400 transition duration-300">Quiz & Tantangan</a>
+                <a href="/src/web/forum.html" class="text-gray-300 hover:text-green-400 transition duration-300">Forum</a>
+    
+                <a href="LoginRegisterForgot.html"
+                    class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 text-center rounded-full transition duration-300">
+                    Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="container mx-auto px-6 py-20 md:py-32 text-center">
+        <div class="bg-black/40 backdrop-blur-xl p-10 rounded-3xl">
+            <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
+                Masa Depan Pertanian Dimulai di Sini
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+                Menggabungkan Teknologi Cerdas dan Kearifan Lokal untuk Komunitas Pertanian yang Mandiri dan Berkelanjutan.
+            </p>
+            <div class="mt-10">
+                <a href="/src/web/lens-ai.html" class="bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 text-lg">
+                    AgriLens - AI
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Content Sections -->
+    <div class="py-20 bg-black/20">
+        <div class="container mx-auto px-6 space-y-20">
+
+            <!-- Latar Belakang -->
+            <section id="latar-belakang" class="flex flex-col md:flex-row items-center gap-10">
+                <div class="w-full md:w-1/2 bg-black/30 backdrop-blur-xl p-8 rounded-2xl shadow-2xl">
+                    <h2 class="text-3xl font-bold text-white mb-4">
+                        <span class="text-green-400">Latar Belakang</span> AgriLens
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed">
+                        AgriLens lahir dari kebutuhan masyarakat dan petani untuk memiliki akses terhadap teknologi pertanian modern yang dapat membantu meningkatkan kualitas produksi, efisiensi kerja, serta memberikan edukasi pertanian yang mudah dipahami. Minimnya pemahaman masyarakat terhadap lingkungan dan pertanian berkelanjutan juga menjadi alasan utama dibuatnya platform ini. Dengan menggabungkan teknologi digital, edukasi, dan pemberdayaan komunitas, AgriLens hadir sebagai solusi untuk menciptakan sistem pertanian yang lebih cerdas dan ramah lingkungan.
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="assets/latarbelakang.png" alt="Smart Farming" class="rounded-2xl shadow-2xl object-cover h-full w-full">
+                </div>
+            </section>
+
+            <!-- Tujuan -->
+            <section id="tujuan" class="text-center">
+                <h2 class="text-4xl font-bold text-white mb-12">
+                    Tujuan <span class="text-green-400">Kami</span>
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-black/30 backdrop-blur-xl p-8 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-500">
+                        <h3 class="text-2xl font-semibold text-green-400 mb-3">Literasi Pertanian</h3>
+                        <p class="text-gray-300">Meningkatkan literasi pertanian bagi masyarakat umum melalui modul interaktif dan gamifikasi.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-black/30 backdrop-blur-xl p-8 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-500">
+                        <h3 class="text-2xl font-semibold text-green-400 mb-3">Monitoring Cerdas</h3>
+                        <p class="text-gray-300">Membantu petani memonitor kondisi tanah dan tanaman menggunakan teknologi digital secara real-time.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-black/30 backdrop-blur-xl p-8 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-500">
+                        <h3 class="text-2xl font-semibold text-green-400 mb-3">Ekosistem Kolaboratif</h3>
+                        <p class="text-gray-300">Membangun forum komunikasi antara masyarakat, petani, dan pihak terkait untuk ekosistem yang solid.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manfaat -->
+            <section id="manfaat" class="text-center">
+                <h2 class="text-4xl font-bold text-white mb-12">
+                    Manfaat <span class="text-green-400">AgriLens</span>
+                </h2>
+                <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+                    <!-- Benefit 1 -->
+                    <div class="bg-black/30 backdrop-blur-xl p-8 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-500 flex items-start space-x-4">
+                        <div class="text-green-400 flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.205 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.795 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.795 5 16.5 5c1.705 0 3.332.477 4.5 1.253v13C19.832 18.477 18.205 18 16.5 18c-1.705 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-semibold text-xl text-white mb-2">Edukasi Modern</h4>
+                            <p class="text-gray-300">Menyediakan materi edukasi pertanian yang mudah diakses dan dipahami oleh semua kalangan, dari pemula hingga ahli.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 2 -->
+                    <div class="bg-black/30 backdrop-blur-xl p-8 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-500 flex items-start space-x-4">
+                        <div class="text-green-400 flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-semibold text-xl text-white mb-2">Analisis Data Akurat</h4>
+                            <p class="text-gray-300">Mempermudah petani dalam melakukan analisis tanah, jadwal tanam, dan pencatatan hasil panen berbasis data yang akurat.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 3 -->
+                    <div class="bg-black/30 backdrop-blur-xl p-8 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-500 flex items-start space-x-4">
+                        <div class="text-green-400 flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-semibold text-xl text-white mb-2">Pusat Informasi Komunitas</h4>
+                            <p class="text-gray-300">Menjadi hub informasi pertanian terpusat di tingkat RT/RW, memfasilitasi pertukaran pengetahuan dan pengalaman.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 4 -->
+                    <div class="bg-black/30 backdrop-blur-xl p-8 rounded-2xl shadow-xl transform hover:-translate-y-2 transition duration-500 flex items-start space-x-4">
+                        <div class="text-green-400 flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-semibold text-xl text-white mb-2">Peningkatan Produktivitas</h4>
+                            <p class="text-gray-300">Meningkatkan hasil panen dan efisiensi pertanian melalui penerapan teknologi dan data yang tepat dan terarah.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Galeri Dokumentasi -->
+    <section id="galeri" class="text-center mt-20">
+        <h2 class="text-4xl font-bold text-white mb-12">
+            Galeri <span class="text-green-400">Dokumentasi</span>
+        </h2>
+    
+        <div class="max-w-7xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6">
+    
+            <!-- Item Galeri 1 -->
+            <div class="group relative overflow-hidden rounded-2xl shadow-xl bg-black/30 backdrop-blur-xl">
+                <img src="assets/dokumentasi/pertemuanPertama.jpg" alt="Galeri 1"
+                    class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
+                <div
+                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">
+                    <p class="text-white text-lg font-semibold">Meeting-1</p>
+                </div>
+            </div>
+    
+            <!-- Item Galeri 2 -->
+            <div class="group relative overflow-hidden rounded-2xl shadow-xl bg-black/30 backdrop-blur-xl">
+                <img src="assets/dokumentasi/pertemuanPertama.jpg" alt="Galeri 2"
+                    class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
+                <div
+                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">
+                    <p class="text-white text-lg font-semibold">Lahan Pertanian</p>
+                </div>
+            </div>
+    
+            <!-- Item Galeri 3 -->
+            <div class="group relative overflow-hidden rounded-2xl shadow-xl bg-black/30 backdrop-blur-xl">
+                <img src="assets/dokumentasi/pertemuanPertama.jpg" alt="Galeri 3"
+                    class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
+                <div
+                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">
+                    <p class="text-white text-lg font-semibold">Pemantauan Tanaman</p>
+                </div>
+            </div>
+    
+            <!-- Item Galeri 4 -->
+            <div class="group relative overflow-hidden rounded-2xl shadow-xl bg-black/30 backdrop-blur-xl">
+                <img src="assets/dokumentasi/pertemuanPertama.jpg" alt="Galeri 4"
+                    class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
+                <div
+                    class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">
+                    <p class="text-white text-lg font-semibold">Kegiatan Masyarakat</p>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/50 mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+            <p class="text-lg font-semibold text-white">🌿 <span class="text-green-400">Agri</span>Lens</p>
+            <p class="mt-2">Smart Agriculture for a Better Future</p>
+            <p class="text-sm mt-4 opacity-70">&copy; 2025 AgriLens Project. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu')   
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>

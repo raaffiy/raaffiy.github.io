@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriLens - News Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('../../assets/bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Header / Navbar -->
+    <header class="bg-black/30 backdrop-blur-xl sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+            <!-- Logo -->
+            <a href="../../index.html" class="text-3xl font-bold text-white">
+                🌿 <span class="text-green-400">Agri</span>Lens
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="module.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    Module Edukasi
+                </a>
+                <a href="news.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    News - AgriLens
+                </a>
+                <a href="quiz.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    Quiz & Tantangan
+                </a>
+                <a href="forum.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    Forum
+                </a>
+            </div>
+
+            <!-- Login (Desktop) -->
+            <a href="../../LoginRegisterForgot.html"
+                class="hidden md:block bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105">
+                Login
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">
+                ☰
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden backdrop-blur-xl md:hidden">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+
+                <a href="module.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    Module Edukasi
+                </a>
+                <a href="news.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    News - AgriLens
+                </a>
+                <a href="quiz.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    Quiz & Tantangan
+                </a>
+                <a href="forum.html" class="text-gray-300 hover:text-green-400 transition duration-300">
+                    Forum
+                </a>
+
+                <a href="../../LoginRegisterForgot.html"
+                    class="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 text-center rounded-full transition duration-300">
+                    Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="container mx-auto px-6 py-12 max-w-5xl">
+
+        <!-- Article Card -->
+        <div class="bg-black/40 backdrop-blur-xl border border-green-600 rounded-3xl shadow-xl overflow-hidden">
+
+            <!-- Image -->
+            <img src="../../assets/menanam/jagung.png" class="w-full h-96 object-cover">
+
+            <!-- Content -->
+            <div class="p-8">
+                <span class="bg-green-600 text-white text-xs px-3 py-1 rounded-full">
+                    Pertanian
+                </span>
+
+                <h1 class="text-4xl font-bold mt-4 text-white leading-snug">
+                    Produksi Padi Nasional 2025 Diprediksi Meningkat
+                </h1>
+
+                <p class="text-sm text-gray-400 mt-2">21 November 2025 • Admin AgriLens</p>
+
+
+                <!-- Article Body -->
+                <div class="mt-6 text-gray-300 leading-relaxed space-y-4">
+                    <p>
+                        Pemerintah menyampaikan keyakinannya bahwa produktivitas lahan pertanian Indonesia akan
+                        meningkat secara signifikan pada tahun 2025. Hal ini didukung berbagai kebijakan baru serta
+                        penerapan teknologi modern di sektor pertanian.
+                    </p>
+
+                    <p>
+                        Pemanfaatan alat sensor tanah, drone pemantauan lahan, hingga kecerdasan buatan (AI) membantu
+                        petani melakukan pemetaan kebutuhan air dan nutrisi secara lebih akurat. Kebijakan ini ditujukan
+                        untuk memaksimalkan hasil panen dengan biaya operasional yang lebih efisien.
+                    </p>
+
+                    <p>
+                        Selain itu, pelatihan agrikultur modern juga diberikan kepada petani lokal untuk meningkatkan
+                        pengetahuan dan kapabilitas dalam menghadapi kebutuhan pertanian masa depan.
+                    </p>
+                </div>
+                <!-- Back Button -->
+                <div class="text-center mt-12">
+                    <a href="news.html"
+                        class="bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-xl font-semibold transition inline-block">
+                        ← Kembali ke Daftar News
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- RELATED NEWS -->
+        <section class="mt-12">
+            <h2 class="text-2xl font-bold mb-6">Berita Terkait</h2>
+
+            <div class="grid gap-6 md:grid-cols-2">
+
+                <!-- Card 1 -->
+                <a href="#"
+                    class="bg-black/40 border border-green-600 rounded-xl overflow-hidden hover:-translate-y-1 transition transform backdrop-blur-xl shadow-lg">
+                
+                    <!-- Image -->
+                    <img src="../../assets/menanam/banana.png" class="w-full h-40 object-cover">
+                
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg">
+                            AI Membantu Petani Prediksi Hama Tanaman
+                        </h3>
+                
+                        <p class="text-sm text-gray-400 mt-2">
+                            Teknologi semakin berkembang dalam mendukung petani...
+                        </p>
+                
+                        <p class="text-xs text-gray-500 mt-3">18 November 2025</p>
+                    </div>
+                </a>
+                
+                
+                <!-- Card 2 -->
+                <a href="#"
+                    class="bg-black/40 border border-green-600 rounded-xl overflow-hidden hover:-translate-y-1 transition transform backdrop-blur-xl shadow-lg">
+                
+                    <!-- Image -->
+                    <img src="../../assets/menanam/wortel.png" class="w-full h-40 object-cover">
+                
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg">
+                            Pupuk Organik Kembali Jadi Tren
+                        </h3>
+                
+                        <p class="text-sm text-gray-400 mt-2">
+                            Banyak petani kini bergeser kembali ke bahan alami...
+                        </p>
+                
+                        <p class="text-xs text-gray-500 mt-3">14 November 2025</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="mt-20 bg-black/30 backdrop-blur-xl py-8 text-center text-gray-400">
+        <p class="text-lg font-semibold text-white">🌿 <span class="text-green-400">Agri</span>Lens</p>
+        <p class="text-sm mt-2 opacity-80">&copy; 2025 AgriLens – All Rights Reserved.</p>
+    </footer>
+
+
+    <!-- MOBILE MENU SCRIPT -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    </script>
+
+</body>
+
+</html>

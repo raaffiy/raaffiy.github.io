@@ -182,7 +182,7 @@
         <div class="bg-gray-900 border border-gray-700 shadow-xl rounded-2xl w-full max-w-2xl p-6">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold text-gray-100">Tambah Module Edukasi</h2>
-                <button id="closeModal" class="text-gray-400 hover:text-gray-200 text-lg">✕</button>
+                <button data-close="moduleModal" class="text-gray-400 hover:text-gray-200 text-lg">✕</button>
             </div>
         
             <form class="space-y-4">
@@ -250,7 +250,7 @@
         <div class="bg-gray-900 border border-gray-700 shadow-xl rounded-2xl w-full max-w-2xl p-6 animate-scale">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold text-gray-100">Tambah News</h2>
-                <button id="closeNewsModal" class="text-gray-400 hover:text-gray-200 text-lg">✕</button>
+                <button data-close="newsModal" class="text-gray-400 hover:text-gray-200 text-lg">✕</button>
             </div>
         
             <form class="space-y-4">
@@ -298,7 +298,7 @@
         
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold text-gray-100">Tambah Quiz</h2>
-                <button id="closeQuizModal" class="text-gray-400 hover:text-gray-200 text-lg">✕</button>
+                <button data-close="quizModal" class="text-gray-400 hover:text-gray-200 text-lg">✕</button>
             </div>
         
             <form class="space-y-4">
@@ -369,78 +369,59 @@
         </div>
     </div>
 
-    <!-- SCRIPTS: centralized modal handling -->
     <script>
-        // Utility: open modal + show overlay + disable main content interactions
         const globalOverlay = document.getElementById('globalOverlay');
         const mainContent = document.getElementById('mainContent');
 
         function openModal(modalId) {
-            // Hide other sections if needed (optional) - here we only disable interactions and dim
             mainContent.classList.add('pointer-events-none', 'opacity-40');
             globalOverlay.classList.remove('hidden');
-
-            const modal = document.getElementById(modalId);
-            if (modal) modal.classList.remove('hidden');
+            document.getElementById(modalId).classList.remove('hidden');
         }
 
         function closeModal(modalId) {
             mainContent.classList.remove('pointer-events-none', 'opacity-40');
             globalOverlay.classList.add('hidden');
-
-            const modal = document.getElementById(modalId);
-            if (modal) modal.classList.add('hidden');
+            document.getElementById(modalId).classList.add('hidden');
         }
 
-        // attach buttons
-        document.getElementById('openModuleBtn').addEventListener('click', () => {
-            openModal('moduleModal');
-        });
+        // OPEN BUTTONS
+        document.getElementById('openModuleBtn').onclick = () => openModal('moduleModal');
+        document.getElementById('openNewsBtn').onclick = () => openModal('newsModal');
+        document.getElementById('openQuizBtn').onclick = () => openModal('quizModal');
 
-        document.getElementById('openNewsBtn').addEventListener('click', () => {
-            openModal('newsModal');
-        });
-
-        document.getElementById('openQuizBtn').addEventListener('click', () => {
-            openModal('quizModal');
-        });
-
-        // close buttons inside modals (data-close attribute)
+        // CLOSE BUTTONS (✕)
         document.querySelectorAll('[data-close]').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const id = btn.getAttribute('data-close');
-                closeModal(id);
+            btn.addEventListener('click', () => {
+                closeModal(btn.dataset.close);
             });
         });
 
-        // close when clicking overlay
+        // CLICK OVERLAY TO CLOSE
         globalOverlay.addEventListener('click', () => {
-            // close all modals (safe)
-            ['moduleModal', 'newsModal', 'quizModal'].forEach(id => closeModal(id));
+            ['moduleModal', 'newsModal', 'quizModal'].forEach(closeModal);
         });
 
-        // Also close when clicking outside modal content (on modal container)
-        document.querySelectorAll('#moduleModal, #newsModal, #quizModal').forEach(modalEl => {
-            modalEl.addEventListener('click', (e) => {
-                if (e.target === modalEl) {
-                    // detect which modal and close
-                    modalEl.classList.add('hidden');
-                    mainContent.classList.remove('pointer-events-none', 'opacity-40');
-                    globalOverlay.classList.add('hidden');
+        // CLICK OUTSIDE MODAL CONTENT
+        document.querySelectorAll('#moduleModal, #newsModal, #quizModal').forEach(modal => {
+            modal.addEventListener('click', e => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
                 }
             });
         });
 
-        // Quiz type toggle inside quizModal
-        const quizTypeSelect = document.getElementById('quizTypeSelect');
-        const pgContainer = document.getElementById('pgContainer');
-        const matchingContainer = document.getElementById('matchingContainer');
+        // QUIZ TYPE TOGGLE (FIXED ID)
+        const quizType = document.getElementById('quizType');
+        const pgFields = document.getElementById('pgFields');
+        const matchingField = document.getElementById('matchingField');
 
-        quizTypeSelect.addEventListener('change', () => {
-            pgContainer.classList.add('hidden');
-            matchingContainer.classList.add('hidden');
-            if (quizTypeSelect.value === 'pg') pgContainer.classList.remove('hidden');
-            if (quizTypeSelect.value === 'matching') matchingContainer.classList.remove('hidden');
+        quizType.addEventListener('change', () => {
+            pgFields.classList.add('hidden');
+            matchingField.classList.add('hidden');
+
+            if (quizType.value === 'pg') pgFields.classList.remove('hidden');
+            if (quizType.value === 'matching') matchingField.classList.remove('hidden');
         });
     </script>
 

@@ -1,3 +1,53 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['users'])){
+    $_SESSION['users'] = [];
+}
+
+$message = "";
+
+/* REGISTER */
+if(isset($_POST['register'])){
+    $nama = $_POST['nama'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $_SESSION['users'][$email] = [
+        "nama" => $nama,
+        "password" => $password
+    ];
+
+    $message = "Registrasi berhasil! Silakan login.";
+}
+
+/* LOGIN */
+if(isset($_POST['login'])){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    if(isset($_SESSION['users'][$email]) && $_SESSION['users'][$email]['password'] == $password){
+        $_SESSION['login'] = true;
+        $_SESSION['user'] = $email;
+        header("Location: src/dashboard/konten.html");
+        exit;
+    }else{
+        $message = "Email atau password salah.";
+    }
+}
+
+/* FORGOT PASSWORD */
+if(isset($_POST['forgot'])){
+    $email = $_POST['email'];
+
+    if(isset($_SESSION['users'][$email])){
+        $message = "Link reset password telah dikirim ke email (simulasi).";
+    }else{
+        $message = "Email tidak ditemukan.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +87,12 @@
 <body class="min-h-screen flex items-center justify-center p-4 text-white"> 
 
     <main class="w-full max-w-md relative">
+        <?php if($message != ""){ ?>
+            <p style="text-align:center;color:yellow;margin-bottom:10px;">
+                <?php echo $message; ?>
+            </p>
+        <?php } ?>
+
         <a href="index.html" class="absolute top-0 left-1/2 -translate-x-1/2 -mt-12 bg-black/50 p-2 rounded-full text-gray-300 hover:text-white hover:bg-green-600 transition-all duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -50,12 +106,12 @@
                 <p class="text-gray-300 mt-2">Selamat Datang Kembali</p>
             </div>
 
-            <form id="loginForm" class="space-y-6">
+            <form id="loginForm" method="POST" class="space-y-6">
                 <div class="relative">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="fas fa-envelope text-gray-400"></i>
                     </span>
-                    <input type="email" placeholder="Email"
+                    <input type="email" name="email" placeholder="Email" required
                         class="w-full p-3 pl-10 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-400" />
                 </div>
             
@@ -63,16 +119,16 @@
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <i class="fas fa-lock text-gray-400"></i>
                     </span>
-                    <input type="password" placeholder="Password"
+                    <input type="password" name="password" placeholder="Password" required
                         class="w-full p-3 pl-10 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-400" />
                 </div>
             
-                <button type="submit"
+                <button type="submit" name="login"
                     class="w-full bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 text-lg hover:bg-green-500">
                     Login
                 </button>
 
-                <!-- <div class="text-center text-sm pt-4 space-y-2">
+                <div class="text-center text-sm pt-4 space-y-2">
                     <p>
                         <span onclick="showPage('forgotPage')"
                             class="text-green-300 hover:text-green-200 cursor-pointer font-semibold">Lupa password?</span>
@@ -81,7 +137,7 @@
                         Belum punya akun? <span onclick="showPage('registerPage')"
                             class="text-green-300 hover:text-green-200 cursor-pointer font-semibold">Daftar sekarang</span>
                     </p>
-                </div> -->
+                </div>
             </form>
         </section>
 
@@ -92,24 +148,24 @@
                 <p class="text-gray-300 mt-2">Buat Akun Baru</p>
             </div>
 
-            <form class="space-y-5">
+            <form class="space-y-5" method="POST">
                 <div class="relative">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3"><i class="fas fa-user text-gray-400"></i></span>
-                    <input type="text" placeholder="Nama Lengkap" required class="w-full p-3 pl-10 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-400" />
+                    <input type="text" name="nama" placeholder="Nama Lengkap" required class="w-full p-3 pl-10 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-400" />
                 </div>
                 <div class="relative">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3"><i class="fas fa-envelope text-gray-400"></i></span>
-                    <input type="email" placeholder="Email" required class="w-full p-3 pl-10 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-400" />
+                    <input type="email" name="email" placeholder="Email" required class="w-full p-3 pl-10 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-400" />
                 </div>
                 <div class="relative">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3"><i class="fas fa-lock text-gray-400"></i></span>
-                    <input type="password" id="registerPassword" placeholder="Password" required class="w-full p-3 pl-10 pr-10 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-400" />
+                    <input type="password" name="password" id="registerPassword" placeholder="Password" required class="w-full p-3 pl-10 pr-10 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-400" />
                     <span class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onclick="togglePasswordVisibility('registerPassword', 'toggleRegisterPassword')">
                         <i id="toggleRegisterPassword" class="fas fa-eye-slash text-gray-400"></i>
                     </span>
                 </div>
                 
-                <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 text-lg hover:bg-green-500">
+                <button type="submit" name="register" class="w-full bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 text-lg hover:bg-green-500">
                     Register
                 </button>
 
@@ -126,13 +182,13 @@
                 <p class="text-gray-300 mt-2">Kami akan bantu reset password Anda.</p>
             </div>
 
-            <form class="space-y-6">
+            <form class="space-y-6" method="POST">
                 <div class="relative">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3"><i class="fas fa-envelope text-gray-400"></i></span>
-                    <input type="email" placeholder="Masukkan email terdaftar" required class="w-full p-3 pl-10 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-400" />
+                    <input type="email" name="email" placeholder="Masukkan email terdaftar" required class="w-full p-3 pl-10 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-400" />
                 </div>
 
-                <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 text-lg hover:bg-green-500">
+                <button type="submit" name="forgot" class="w-full bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 text-lg hover:bg-green-500">
                     Kirim Link Reset
                 </button>
 

@@ -1,48 +1,56 @@
 <?php
 session_start();
+$conn = mysqli_connect("localhost", "root", "", "AgriLens");
 
-if(!isset($_SESSION['users'])){
-    $_SESSION['users'] = [];
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
 }
-
 $message = "";
 
-/* REGISTER */
-if(isset($_POST['register'])){
+/* ================= REGISTER ================= */
+if (isset($_POST['register'])) {
     $nama = $_POST['nama'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $cek = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
 
-    $_SESSION['users'][$email] = [
-        "nama" => $nama,
-        "password" => $password
-    ];
+    if (mysqli_num_rows($cek) > 0) {
+        $message = "Email sudah terdaftar!";
+    } else {
+        mysqli_query($conn, "INSERT INTO users (nama, email, password)
+        VALUES ('$nama', '$email', '$password')");
 
-    $message = "Registrasi berhasil! Silakan login.";
-}
-
-/* LOGIN */
-if(isset($_POST['login'])){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    if(isset($_SESSION['users'][$email]) && $_SESSION['users'][$email]['password'] == $password){
-        $_SESSION['login'] = true;
-        $_SESSION['user'] = $email;
-        header("Location: src/dashboard/konten.html");
-        exit;
-    }else{
-        $message = "Email atau password salah.";
+        $message = "Registrasi berhasil! Silakan login.";
     }
 }
 
-/* FORGOT PASSWORD */
-if(isset($_POST['forgot'])){
+/* ================= LOGIN ================= */
+if (isset($_POST['login'])) {
     $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    if(isset($_SESSION['users'][$email])){
-        $message = "Link reset password telah dikirim ke email (simulasi).";
-    }else{
+    $query = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
+    $user = mysqli_fetch_assoc($query);
+
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['login'] = true;
+        $_SESSION['user'] = $user['nama'];
+
+        header("Location: src/dashboard/konten.html");
+        exit;
+    } else {
+        $message = "Email atau password salah!";
+    }
+}
+
+/* ================= FORGOT ================= */
+if (isset($_POST['forgot'])) {
+    $email = $_POST['email'];
+    $cek = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
+
+    if (mysqli_num_rows($cek) > 0) {
+        $message = "Simulasi: Link reset password dikirim ke email.";
+    } else {
         $message = "Email tidak ditemukan.";
     }
 }
@@ -207,14 +215,6 @@ if(isset($_POST['forgot'])){
                 document.getElementById(id).classList.toggle('hidden', id !== pageId);
             });
         }
-
-        // LOGIN FORM HANDLER (TANPA VALIDASI)
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Langsung pindah ke dashboard
-            window.location.href = "src/dashboard/konten.html";
-        });
 
         // Default page
         showPage('loginPage');

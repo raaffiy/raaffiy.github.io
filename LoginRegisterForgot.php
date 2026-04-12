@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "AgriLens");
+$conn = mysqli_connect("localhost", "root", "", "agrilens");
 
 if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
         $_SESSION['login'] = true;
         $_SESSION['user'] = $user['nama'];
 
-        header("Location: src/dashboard/konten.html");
+        header("Location: src/dashboard/konten.php");
         exit;
     } else {
         $message = "Email atau password salah!";
